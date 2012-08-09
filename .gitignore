@@ -1,0 +1,12 @@
+# Configuration files
+/nbproject/*
+
+
+.DS_Store
+Thumbs.db
+/vendor
+*.swp
+*.swo
+*.*~
+.vimrc
+.local.*.vimrc
