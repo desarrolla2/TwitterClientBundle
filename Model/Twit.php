@@ -33,6 +33,15 @@ class Twit
      * @var \DateTime
      */
     protected $pubDate = null;
+    
+    /**
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getText();
+    }
 
     /**
      * 
