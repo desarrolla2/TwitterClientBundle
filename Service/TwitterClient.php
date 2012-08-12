@@ -149,6 +149,19 @@ class TwitterClient
     }
 
     /**
+     * 
+     * @return Twit | false
+     */
+    public function fetchOne()
+    {
+        $twits = $this->fetch(1);
+        if (count($twits)) {
+            return $twits[0];
+        }
+        return false;
+    }
+
+    /**
      * Parse Twit Text: links, users, and hashtag
      * @param type $text
      * @return type 
