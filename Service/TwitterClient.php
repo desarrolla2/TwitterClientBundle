@@ -170,7 +170,7 @@ class TwitterClient
     protected function parseText($text)
     {
         $text = trim(substr($text, (strlen($this->screenName) + 2), self::TWIT_LENGHT));
-        return TwitterUtil::parse($text);
+        return TwitterUtil::parseText($text);
     }
 
 }
