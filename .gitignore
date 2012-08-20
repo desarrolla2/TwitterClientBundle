@@ -1,7 +1,5 @@
 # Configuration files
 /nbproject/*
-
-
 .DS_Store
 Thumbs.db
 /vendor

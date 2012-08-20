@@ -17,6 +17,7 @@ namespace Desarrolla2\Bundle\TwitterClientBundle\Service;
 
 use Desarrolla2\Bundle\RSSClientBundle\Model\RSSClientInterface;
 use Desarrolla2\Bundle\TwitterClientBundle\Model\Twit;
+use Desarrolla2\Bundle\TwitterClientBundle\Util\TwitterUtil;
 
 class TwitterClient
 {
@@ -168,16 +169,8 @@ class TwitterClient
      */
     protected function parseText($text)
     {
-        $text = (string) $text;
         $text = trim(substr($text, (strlen($this->screenName) + 2), self::TWIT_LENGHT));
-        // links
-        $text = preg_replace('@(https?://([-\w\.]+)+(/([\w/_\.]*(\?\S+)?(#\S+)?)?)?)@', '<a href="$1">$1</a>', $text);
-        // users         
-        $text = preg_replace('(@([a-zA-Z0-9_]+))', '<a href="http://www.twitter.com/\1">\0</a>', $text);
-        // hastag
-        $text = preg_replace('/(^|s)#(w+)/', '1<a href="http://search.twitter.com/search?q=%232">#2</a>', $text);
-
-        return $text;
+        return TwitterUtil::parse($text);
     }
 
 }
