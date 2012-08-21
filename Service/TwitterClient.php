@@ -25,7 +25,7 @@ class TwitterClient
     /**
      * @var Desarrolla2\Bundle\RSSClientBundle\Model\RSSClientInterface
      */
-    protected $client;
+    protected $provider;
 
     /**
      * @var string
@@ -80,9 +80,9 @@ class TwitterClient
      *
      * @param RSSClientInterface $client 
      */
-    public function setClient(RSSClientInterface $client)
+    public function setProvider(RSSClientInterface $client)
     {
-        $this->client = $client;
+        $this->provider = $client;
     }
 
     /**
@@ -100,15 +100,16 @@ class TwitterClient
      */
     public function setSearchQuery($searchQuery)
     {
+        throw new Exception('Not available, yet');
         $this->searchQuery = (string) $searchQuery;
     }
 
     /**
-     * 
+     * count number of twits
      */
     public function count()
     {
-        
+        return count($this->twits);
     }
 
     /**
@@ -134,9 +135,10 @@ class TwitterClient
      */
     public function fetch($limit = 20)
     {
+        $channelName = __CLASS__ . '_' . $this->screenName;
         $limit = (int) $limit;
-        $this->client->setFeed($this->getScreenNameUrl());
-        $nodes = $this->client->fetch($limit);
+        $this->provider->setFeed($this->getScreenNameUrl(), $channelName);
+        $nodes = $this->provider->fetch($channelName, $limit);
 
         foreach ($nodes as $node) {
             $twit = new Twit();

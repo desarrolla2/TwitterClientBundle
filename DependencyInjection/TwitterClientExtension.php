@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class TwitterClientExtension extends Extension
 {
+
     /**
      * {@inheritDoc}
      */
@@ -22,7 +23,23 @@ class TwitterClientExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.xml');     
+        
+        if (isset($config['screen_name'])){
+            $container->setParameter('d2_client_twitter.screen_name', $config['screen_name']);
+        }else{
+            $container->setParameter('d2_client_twitter.screen_name', null);
+        }        
+        
     }
+
+    /**
+     * @return string
+     */
+    public function getAlias()
+    {
+        return 'twitter_client';
+    }
+
 }
