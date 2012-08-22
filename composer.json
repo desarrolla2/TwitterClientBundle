@@ -1,8 +1,8 @@
 {
     "name": "desarrolla2/twitter-client-bundle",
     "type": "symfony-bundle",
-    "description": "This Bundle provides a way to get twitter feeds friendly.",
-    "keywords": ["rss", "client"],
+    "description": "This Bundle provides a way to get twits friendly.",
+    "keywords": ["twitter", "client"],
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [
