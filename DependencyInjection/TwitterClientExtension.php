@@ -27,9 +27,9 @@ class TwitterClientExtension extends Extension
         $loader->load('services.xml');     
         
         if (isset($config['screen_name'])){
-            $container->setParameter('d2_client_twitter.screen_name', $config['screen_name']);
+            $container->setParameter('twitter_client.screen_name', $config['screen_name']);
         }else{
-            $container->setParameter('d2_client_twitter.screen_name', null);
+            $container->setParameter('twitter_client.screen_name', null);
         }        
         
     }
