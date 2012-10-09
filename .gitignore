@@ -1,7 +1,7 @@
 # Configuration files
 /nbproject/*
 /vendor
-#/composer.lock
+/composer.lock
 .DS_Store
 Thumbs.db
 *.swp
