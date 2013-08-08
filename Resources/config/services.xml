@@ -4,18 +4,15 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="twitter_client_rss_client.class">Desarrolla2\RSSClient\RSSClient</parameter>
         <parameter key="twitter_client.class">Desarrolla2\TwitterClient\TwitterClient</parameter>       
     </parameters>
 
     <services>
-        <service id="twitter_client_rss_client" class="%twitter_client_rss_client.class%">
-        </service>
         <service id="twitter_client" class="%twitter_client.class%">            
-            <argument type="service" id="twitter_client_rss_client"/>            
-            <call method="setScreenName">
-                <argument>%twitter_client.screen_name%</argument>
-            </call>            
+            <argument type="string">%twitter_client.consumer_key%</argument>
+            <argument type="string">%twitter_client.consumer_secret%</argument>
+            <argument type="string">%twitter_client.token%</argument>
+            <argument type="string">%twitter_client.token_secret%</argument>
         </service>
     </services>    
 </container>

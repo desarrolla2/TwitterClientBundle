@@ -19,14 +19,23 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $treeBuilder->root('twitter_client')
-            ->isRequired(false)
-            ->children()                
-                ->scalarNode('screen_name')
-                ->isRequired(false)
+            ->children()
+                ->scalarNode('consumer_key')
                 ->end()
-            ->end()        
+            ->end()
+            ->children()
+                ->scalarNode('consumer_secret')
+                ->end()
+            ->end()
+            ->children()
+                ->scalarNode('token')
+                ->end()
+            ->end()
+            ->children()
+                ->scalarNode('token_secret')
+                ->end()
+            ->end()
             ;
-
 
         return $treeBuilder;
     }

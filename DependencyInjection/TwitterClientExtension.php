@@ -24,14 +24,18 @@ class TwitterClientExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.xml');     
-        
-        if (isset($config['screen_name'])){
+        $loader->load('services.xml');
+
+        $container->setParameter('twitter_client.consumer_key', $config['consumer_key']);
+        $container->setParameter('twitter_client.consumer_secret', $config['consumer_secret']);
+        $container->setParameter('twitter_client.token', $config['token']);
+        $container->setParameter('twitter_client.token_secret', $config['token_secret']);
+
+        if (isset($config['screen_name'])) {
             $container->setParameter('twitter_client.screen_name', $config['screen_name']);
-        }else{
+        } else {
             $container->setParameter('twitter_client.screen_name', null);
-        }        
-        
+        }
     }
 
     /**
@@ -41,5 +45,4 @@ class TwitterClientExtension extends Extension
     {
         return 'twitter_client';
     }
-
 }
